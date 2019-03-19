@@ -16,7 +16,7 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v ~/.m2:/root/.m2 
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v ~/.m2:/root/.m2 fobbyal/maven-dind mvn -v
 ```
 
-* Maven  
+* Java
 ```
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v ~/.m2:/root/.m2 fobbyal/maven-dind java -version
 ```
