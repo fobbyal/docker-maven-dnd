@@ -1,10 +1,11 @@
 FROM docker:stable
 RUN apk update
 RUN apk fetch openjdk8
-RUN apk add openjdk8
+RUN apk add openjdk8 
 ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+ADD .ssh /root/.ssh
 
-RUN apk add --no-cache curl tar bash procps nss
+RUN apk add --no-cache  git less openssh curl tar bash procps nss
 
 ARG MAVEN_VERSION=3.6.0
 ARG USER_HOME_DIR="/root"
