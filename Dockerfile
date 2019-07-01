@@ -3,7 +3,7 @@ RUN apk update
 RUN apk fetch openjdk8
 RUN apk add openjdk8 
 ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
-ADD .ssh /root/.ssh
+#ADD .ssh /root/.ssh
 
 RUN apk add --no-cache  git less openssh curl tar bash procps nss
 
