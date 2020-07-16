@@ -1,0 +1,34 @@
+Sending build context to Docker daemon  91.65kB
+Step 1/13 : FROM docker:stable
+ ---> 81f5749c9058
+Step 2/13 : RUN apk update
+ ---> Using cache
+ ---> 62c15a16aad4
+Step 3/13 : RUN apk fetch openjdk8
+ ---> Using cache
+ ---> dc71be0e25e9
+Step 4/13 : RUN apk add openjdk8
+ ---> Using cache
+ ---> 5c634a6d0d3d
+Step 5/13 : ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+ ---> Using cache
+ ---> 2c0b1646f488
+Step 6/13 : ENV GLIBC_VER=2.31-r0
+ ---> Using cache
+ ---> 8c3816d839c7
+Step 7/13 : RUN apk add --no-cache  git less openssh curl tar bash procps nss     && curl -sL https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -o /etc/apk/keys/sgerrand.rsa.pub     && curl -sLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VER}/glibc-${GLIBC_VER}.apk     && curl -sLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VER}/glibc-bin-${GLIBC_VER}.apk     && apk add --no-cache         glibc-${GLIBC_VER}.apk         glibc-bin-${GLIBC_VER}.apk     && curl -sL https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip     && unzip awscliv2.zip     && aws/install     && rm -rf         awscliv2.zip         aws         /usr/local/aws-cli/v2/*/dist/aws_completer         /usr/local/aws-cli/v2/*/dist/awscli/data/ac.index         /usr/local/aws-cli/v2/*/dist/awscli/examples     && apk --no-cache del         binutils         curl     && rm glibc-${GLIBC_VER}.apk     && rm glibc-bin-${GLIBC_VER}.apk     && rm -rf /var/cache/apk/*
+ ---> Using cache
+ ---> 33d5e3624b0a
+Step 8/13 : ARG MAVEN_VERSION=3.6.3
+ ---> Using cache
+ ---> 26e38b84bd6c
+Step 9/13 : ARG USER_HOME_DIR="/root"
+ ---> Using cache
+ ---> 615a8ded36e8
+Step 10/13 : ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
+ ---> Using cache
+ ---> a2d6fa32677c
+Step 11/13 : RUN mkdir -p /usr/share/maven /usr/share/maven/ref   && curl -fsSL -o /tmp/apache-maven.tar.gz ${BASE_URL}/apache-maven-${MAVEN_VERSION}-bin.tar.gz   && tar -xzf /tmp/apache-maven.tar.gz -C /usr/share/maven --strip-components=1   && rm -f /tmp/apache-maven.tar.gz   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
+ ---> Running in 6941ccad2fd5
+[91m/bin/sh: curl: not found
+[0m
